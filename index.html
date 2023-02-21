@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>放置クリックゲーム</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=0">
+</head>
+<body>
+	<div class="container">
+		<h1 id="title">放置クリックゲーム</h1>
+    <!--
+		<p>クリックでポイントを獲得しよう！</p>
+    -->
+		<p>クリックしたときに追加された金額: <span id="add-score">0.0</span>pt<br>自動生産量: <span id="add-score-auto">0.0</span></p>
+		<p id="score">スコア: 0.0pt</p>
+		<button id="button">クリック！</button>
+    <h2>ショップ</h2>
+		<div class="item">
+			<table>
+        <tr>
+				  <td><p>自動生成アイテム Lv.1 <span id="pps1"></span>/s<br><span id="item1-price">10</span>pt  所有数: <span id="item1-count">0</span></p></td>
+				  <td><button id="item1" class="buy-button">購入</button ></td>
+
+				  <td><p>自動生成アイテム Lv.2 <span id="pps2"></span>/s<br><span id="item2-price">500</span>pt  所有数: <span id="item2-count">0</span></p></td>
+				  <td><button id="item2" class="buy-button">購入</button></td>
+			  </tr>
+        <tr>
+				  <td><p>自動生成アイテム Lv.3 <span id="pps3"></span>/s<br><span id="item3-price">3000</span>pt  所有数: <span id="item3-count">0</span></p></td>
+				  <td><button id="item3" class="buy-button">購入</button></td>
+
+          <td><p>自動生成アイテム Lv.4 <span id="pps4"></span>/s<br><span id="item4-price">10000</span>pt  所有数: <span id="item4-count">0</span></p></td>
+          <td><button id="item4" class="buy-button">購入</button></td>
+        </tr>
+        <tr>
+          <td><p>自動生成アイテム Lv.5 <span id="pps5"></span>/s<br><span id="item5-price">100000</span>pt  所有数: <span id="item5-count">0</span></p></td>
+          <td><button id="item5" class="buy-button">購入</button ></td>
+
+          <td><p>自動生成アイテム Lv.6 <span id="pps6"></span>/s<br><span id="item6-price">1000000</span>pt  所有数: <span id="item6-count">0</span></p></td>
+          <td><button id="item6" class="buy-button">購入</button></td>
+        </tr>
+      </div>
+		</div>
+	</div>
+
+	<script src="app.js"></script>
+</body>
+</html>

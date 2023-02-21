@@ -1,0 +1,91 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  #title {
+    font-size: 36px;
+    margin-top: 32px;
+  }
+  
+  #button {
+    padding: 24px 32px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: none;
+    background-color: #5234ff;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  #button:active {
+    padding: 23px 31px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: #3b19ff;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 2px;
+  }
+
+  button {
+    padding: 16px 32px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: #8bc34a;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  button[disabled] {
+    padding: 16px 32px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: #1a1a1a;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  button:hover {
+    background-color: #689f38;
+  }
+
+  button[disabled]:hover {
+    background-color: #1a1a1a;
+  }
+  
+  p {
+    font-size: 23px;
+    margin-top: 16px;
+  }
+  
+  #points {
+    font-weight: bold;
+  }
+  
+  #auto-click-cost {
+    font-weight: bold;
+  }
+  
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .item button {
+    margin-left: 15px;
+  }
+
+  .right {
+    margin-right: 20px;
+  }
+  
