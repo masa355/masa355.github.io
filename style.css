@@ -1,91 +1,144 @@
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  #title {
-    font-size: 36px;
-    margin-top: 32px;
-  }
-  
-  #button {
-    padding: 24px 32px;
-    font-size: 24px;
-    border-radius: 10px;
-    border: none;
-    background-color: #5234ff;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
 
-  #button:active {
-    padding: 23px 31px;
-    font-size: 24px;
-    border-radius: 8px;
-    border: none;
-    background-color: #3b19ff;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    margin-bottom: 2px;
-  }
+header {
+  position: fixed;
+  z-index: 1;
+  background-color: white;
+  padding: 10px;
+}
 
-  button {
-    padding: 16px 32px;
-    font-size: 24px;
-    border-radius: 8px;
-    border: none;
-    background-color: #8bc34a;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-  }
+#title {
+  font-size: 36px;
+  margin-top: 32px;
+}
   
-  button[disabled] {
-    padding: 16px 32px;
-    font-size: 24px;
-    border-radius: 8px;
-    border: none;
-    background-color: #1a1a1a;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-  }
-  
-  button:hover {
-    background-color: #689f38;
-  }
+#button {
+  padding: 24px 32px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: none;
+  background-color: #5234ff;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+}
+#button:active {
+  padding: 23px 31px;
+  font-size: 24px;
+  border-radius: 8px;
+  border: none;
+  background-color: #3b19ff;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 2px;
+}
 
-  button[disabled]:hover {
-    background-color: #1a1a1a;
-  }
-  
-  p {
-    font-size: 23px;
-    margin-top: 16px;
-  }
-  
-  #points {
-    font-weight: bold;
-  }
-  
-  #auto-click-cost {
-    font-weight: bold;
-  }
-  
-  .item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.buy-button {
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  font-size: 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #8bc34a;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+}
 
-  .item button {
-    margin-left: 15px;
-  }
+.score {
+  font-size: 24px;
+}
 
-  .right {
-    margin-right: 20px;
-  }
+aside {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+button[disabled] {
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  font-size: 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #1a1a1a;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+}
   
+button:hover {
+  background-color: #689f38;
+}
+button[disabled]:hover {
+  background-color: #1a1a1a;
+}
+  
+p {
+  font-size: 20px;
+  margin-top: 16px;
+}
+  
+#points {
+  font-weight: bold;
+}
+  
+#auto-click-cost {
+  font-weight: bold;
+}
+
+.item {
+  padding: 10px;
+  border: 1px solid black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+}
+
+#click {
+  position: absolute;
+  left: 0;
+  top: 50px;
+}
+
+
+.item button {
+  margin-left: 15px;
+}
+
+.item table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.item tr {
+  border-bottom: 1px solid #8b8b8b; /* 下線を追加 */
+}
+
+/* スクロールバーの太さや形状などのプロパティはブラウザによって異なるため、ここでは簡略化するために省略しています */
+/* Chrome, Safari, Edge用 */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #666;
+}
+
+.item h2 {
+  font-size: 20px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
