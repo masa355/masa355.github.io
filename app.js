@@ -49,7 +49,7 @@ button.addEventListener("click", () => {
     const addScore = Math.floor(Math.random() * 101) / 100 + 0.1;
     score += addScore;
     scoreText.innerText = `スコア: ${score.toFixed(1)}pt`;
-    addScoreText.innerText = `${addScore.toFixed(1)}pt`;
+    addScoreText.innerText = `${addScore.toFixed(1)}`;
     buttonchech()
 });
 
@@ -222,3 +222,11 @@ function buttonchech() {
     item6.style.backgroundColor = cant;
 }
 
+
+function setScrollHeight() {
+  const windowHeight = window.innerHeight;
+  const scrollArea = document.getElementById("scroll-area");
+  scrollArea.style.height = (windowHeight - 40) + "px";
+}
+window.onload = setScrollHeight;
+window.onresize = setScrollHeight;
