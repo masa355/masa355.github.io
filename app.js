@@ -11,7 +11,10 @@ let autoItemCounts = [0, 0, 0, 0, 0, 0];
 // 自動生成アイテムの各レベルでの生成量
 const autoScores = [0.5, 2, 10, 50, 100, 500];
 
-
+//色指定
+const disa = "#1a1a1a";//無効
+const cant = "#567a2d";//金額不足
+const can  = "#8bc34a";//購入可能
 
 const button = document.getElementById("button");
 const addScoreText = document.getElementById("add-score");
@@ -170,45 +173,52 @@ pps6.innerText = autoScores[5];
 
 buttonchech();
 
+
 function buttonchech() {
+  //1
   if (score >= autoItemPrices[0])
-    item1.style.backgroundColor = "#8bc34a";
+    item1.style.backgroundColor = can;
   else
-    item1.style.backgroundColor = "#567a2d";
+    item1.style.backgroundColor = cant;
 
-  if (score >= autoItemPrices[1])
-    item2.style.backgroundColor = "#8bc34a";
-  else if (autoItemCounts[0] >= 10)
-    item2.style.backgroundColor = "#567a2d";
+  //2
+  if (item2.disabled)
+    item2.style.backgroundColor = disa;
+  else if (score >= autoItemPrices[1])
+    item2.style.backgroundColor = can;
   else
-    item2.style.backgroundColor = "#1a1a1a";
+    item2.style.backgroundColor = cant;
 
-  if (score >= autoItemPrices[2])
-    item3.style.backgroundColor = "#8bc34a";
-  else if (autoItemCounts[1] >= 10)
-    item3.style.backgroundColor = "#567a2d";
+  //3
+  if (item3.disabled)
+    item3.style.backgroundColor = disa;
+  else if (score >= autoItemPrices[2])
+    item3.style.backgroundColor = can;
   else
-    item3.style.backgroundColor = "#1a1a1a";
+    item3.style.backgroundColor = cant;
 
-  if (score >= autoItemPrices[3])
-    item4.style.backgroundColor = "#8bc34a";
-  else if (autoItemCounts[2] >= 10)
-    item4.style.backgroundColor = "#567a2d";
+  //4
+  if (item4.disabled)
+    item4.style.backgroundColor = disa;
+  else if (score >= autoItemPrices[3])
+    item4.style.backgroundColor = can;
   else
-    item4.style.backgroundColor = "#1a1a1a";
+    item4.style.backgroundColor = cant;
 
-  if (score >= autoItemPrices[4])
-    item5.style.backgroundColor = "#8bc34a";
-  else if (autoItemCounts[3] >= 10)
-    item5.style.backgroundColor = "#567a2d";
+  //5
+  if (item5.disabled)
+    item5.style.backgroundColor = disa;
+  else if (score >= autoItemPrices[4])
+    item5.style.backgroundColor = can;
   else
-    item5.style.backgroundColor = "#1a1a1a";
+    item5.style.backgroundColor = cant;
 
-  if (score >= autoItemPrices[5])
-    item6.style.backgroundColor = "#8bc34a";
-  else if (autoItemCounts[4] >= 10)
-    item6.style.backgroundColor = "#567a2d";
+  //6
+  if (item6.disabled)
+    item6.style.backgroundColor = disa;
+  else if (score >= autoItemPrices[5])
+    item6.style.backgroundColor = can;
   else
-    item6.style.backgroundColor = "#1a1a1a";
+    item6.style.backgroundColor = cant;
 }
 
