@@ -20,7 +20,7 @@ header {
 }
   
 #button {
-  padding: 24px 32px;
+  padding: 64px 32px;
   font-size: 24px;
   border-radius: 10px;
   border: none;
@@ -30,7 +30,7 @@ header {
   display: inline-block;
 }
 #button:active {
-  padding: 23px 31px;
+  padding: 63px 31px;
   font-size: 24px;
   border-radius: 8px;
   border: none;
