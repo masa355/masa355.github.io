@@ -3,9 +3,6 @@ const formatter = new Intl.NumberFormat('ja-JP', { notation: 'compact', compactD
 let score = new BigNumber("0");
 
 
-
-const scoreDecimalPlaces = score.dp();
-
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 }
 //初期値段
