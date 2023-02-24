@@ -2,7 +2,7 @@
 let score = new BigNumber(Cookies.get("score") || "0");
 
 //Github更新確認
-const version = "0.13.7";
+const version = "0.13.8";
 
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 };
@@ -301,6 +301,5 @@ window.addEventListener('unload', function() {
 });
 
 function Price(quantity, price, rate) {
-  const price = initialPrice * Math.pow(rate, quantity);
-  return price;
+  return (price * Math.pow(rate, quantity));
 }
