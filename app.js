@@ -267,6 +267,7 @@ function getNotationString(s = new BigNumber(score)) {
 
   for (let i = notations.length - 1; i >= 0; i--) {
     if (s.gte(Number(notations[i].value))) {
+      if (s.eq(Infinity)) return Infinity;
       let notation = notations[i].notation;
       let n = new BigNumber(s);
       let num = new BigNumber(n.decimalPlaces(1, BigNumber.ROUND_DOWN));
