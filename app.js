@@ -2,7 +2,8 @@
 let score = new BigNumber(Cookies.get("score") || "0");
 
 //Github更新確認
-const version = "0.14.6";
+const version = "0.14.7";
+console.log("ほうちげー version: "+version);
 
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 };
