@@ -282,5 +282,5 @@ function getNotationString(s = new BigNumber(score)) {
 
 
 window.addEventListener('unload', function() {
-  Cookies.set("score", score.toFixed(1));
+  Cookies.set("score", score.toFixed(1), { expires: 28 });
 });
