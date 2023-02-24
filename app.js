@@ -2,7 +2,7 @@
 let score = new BigNumber(Cookies.get("score") || "0");
 
 //Github更新確認
-const version = "0.14.5";
+const version = "0.14.6";
 
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 };
@@ -163,6 +163,12 @@ setInterval(() => {
     document.getElementById("add-score-auto").innerText = addScore.toFixed(1);
     buttonchech()
 }, 1000);
+
+//定期保存
+setInterval(() => {
+  Cookies.set("score", score.toFixed(1), { expires: 28 });
+  Cookies.set("ItemCounts", JSON.stringify(autoItemCounts));
+}, 20000);
 
 
 // 初期状態で自動生成アイテムを非活性にする
