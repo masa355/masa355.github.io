@@ -1,9 +1,11 @@
 const formatter = new Intl.NumberFormat('ja-JP', { notation: 'compact', compactDisplay: 'short' });
 
-let score = new BigNumber(Cookies.get("score")) || new BigNumber("0");
+let score = new BigNumber("0");
+if (Cookies.get("score") != undefined)
+    score = new BigNumber(Cookies.get("score"))
 
 //Github更新確認
-const version = 0.1
+const version = 0.12
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 }
 //初期値段
@@ -142,7 +144,7 @@ item6.addEventListener("click", () => {
 
 // 自動生成アイテムによるポイント生成
 setInterval(() => {
-  const addScore = autoScores[0] * autoItemCounts[0] + autoScores[1] * autoItemCounts[1] + autoScores[2] * autoItemCounts[2] + autoScores[3] * autoItemCounts[3] + autoScores[4] * autoItemCounts[4] + autoScores[5] * autoItemCounts[5];
+    const addScore = autoScores[0] * autoItemCounts[0] + autoScores[1] * autoItemCounts[1] + autoScores[2] * autoItemCounts[2] + autoScores[3] * autoItemCounts[3] + autoScores[4] * autoItemCounts[4] + autoScores[5] * autoItemCounts[5];
     score = score.plus(addScore);
     showScore();
     // 自動生成アイテムによるポイントの表示
@@ -176,6 +178,7 @@ pps6.innerText = autoScores[5];
 
 
 buttonchech();
+showScore();
 
 
 function buttonchech() {
