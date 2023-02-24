@@ -2,7 +2,7 @@
 let score = new BigNumber(Cookies.get("score") || "0")
 
 //Github更新確認
-const version = 0.13
+const version = 0.13.5
 
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 };
@@ -17,9 +17,9 @@ let autoItemCounts = JSON.parse(Cookies.get("ItemCounts") || "[1,54,2,8,3,43]");
 let autoItemPrices = [10, 500, 3000, 10000, 100000, 1000000];
 
 for (let i=0; i<autoItemPrices.length; i++) {
-    const price = Price(autoItemCounts[i], autoItemPrices[i], PricesRate[i]);
-    autoItemPrices[i] = price;
-    document.getElementById(`item${i+1}-price`);.innerText = getNotationString(new BigNumber(price));
+  const price = Price(autoItemCounts[i], autoItemPrices[i], PricesRate[i]);
+  autoItemPrices[i] = price;
+  document.getElementById(`item${i+1}-price`);.innerText = getNotationString(new BigNumber(price));
 }
 
 // 自動生成アイテムの各レベルでの生成量
@@ -297,4 +297,10 @@ function getNotationString(s = new BigNumber(score)) {
 
 window.addEventListener('unload', function() {
   Cookies.set("score", score.toFixed(1), { expires: 28 });
+  Cookies.set("ItemCounts", JSON.stringify(autoItemCounts));
 });
+
+function Price(quantity, price, rate) {
+  const price = initialPrice * Math.pow(rate, quantity);
+  return price;
+}
