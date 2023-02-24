@@ -2,7 +2,8 @@ const formatter = new Intl.NumberFormat('ja-JP', { notation: 'compact', compactD
 
 let score = new BigNumber(Cookies.get("score")) || new BigNumber("0");
 
-
+//Github更新確認
+const version = 0.1
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 }
 //初期値段
