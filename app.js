@@ -178,13 +178,6 @@ item4.disabled = (item3Count.innerText < 10);;
 item5.disabled = (item4Count.innerText < 10);;
 item6.disabled = (item5Count.innerText < 10);;
 
-// 自動生成アイテムの価格を表示
-item1Price.innerText = autoItemPrices[0];
-item2Price.innerText = autoItemPrices[1];
-item3Price.innerText = autoItemPrices[2];
-item4Price.innerText = autoItemPrices[3];
-item5Price.innerText = autoItemPrices[4];
-item6Price.innerText = autoItemPrices[5];
 
 //score par second の表示
 pps1.innerText = autoScores[0];
