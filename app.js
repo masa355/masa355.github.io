@@ -2,7 +2,7 @@
 let score = new BigNumber(Cookies.get("score") || "0");
 
 //Github更新確認
-const version = "0.14.1";
+const version = "0.14.2";
 
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 };
@@ -165,11 +165,11 @@ setInterval(() => {
 
 
 // 初期状態で自動生成アイテムを非活性にする
-item2.disabled = true;
-item3.disabled = true;
-item4.disabled = true;
-item5.disabled = true;
-item6.disabled = true;
+item2.disabled = (item1Count.innerText >= 10);
+item3.disabled = (item2Count.innerText >= 10);;
+item4.disabled = (item3Count.innerText >= 10);;
+item5.disabled = (item4Count.innerText >= 10);;
+item6.disabled = (item5Count.innerText >= 10);;
 
 // 自動生成アイテムの価格を表示
 item1Price.innerText = autoItemPrices[0];
