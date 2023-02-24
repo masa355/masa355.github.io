@@ -2,7 +2,7 @@
 let score = new BigNumber(Cookies.get("score") || "0");
 
 //Github更新確認
-const version = "0.13.5";
+const version = "0.13.7";
 
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 };
@@ -11,7 +11,7 @@ let clickScore = { min: 0.5, max: 1 };
 const PricesRate = [1.1, 1.2, 1.2, 1.2, 1.2, 1.2];
 
 //アイテムの個数
-let autoItemCounts = JSON.parse(Cookies.get("ItemCounts") || "[1,54,2,8,3,43]");
+let autoItemCounts = JSON.parse(Cookies.get("ItemCounts") || "[1,1,1,1,1,1]");
 
 //初期値段
 let autoItemPrices = [10, 500, 3000, 10000, 100000, 1000000];
@@ -19,7 +19,7 @@ let autoItemPrices = [10, 500, 3000, 10000, 100000, 1000000];
 for (let i=0; i<autoItemPrices.length; i++) {
   const price = Price(autoItemCounts[i], autoItemPrices[i], PricesRate[i]);
   autoItemPrices[i] = price;
-  document.getElementById(`item${i+1}-price`);.innerText = getNotationString(new BigNumber(price));
+  document.getElementById(`item${i+1}-price`).innerText = getNotationString(new BigNumber(price));
 }
 
 // 自動生成アイテムの各レベルでの生成量
