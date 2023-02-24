@@ -2,7 +2,7 @@
 let score = new BigNumber(Cookies.get("score") || "0");
 
 //Github更新確認
-const version = "0.14.3";
+const version = "0.14.";
 
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 };
@@ -73,8 +73,8 @@ button.addEventListener("click", () => {
 item1.addEventListener("click", () => {
     if (score.gte(autoItemPrices[0])) {
         score = score.minus(autoItemPrices[0]);
-        autoItemPrices[0] *= 1.1;
         autoItemCounts[0]++;
+        autoItemPrices[0] = Price(autoItemCounts[0], autoItemPrices[0], PricesRate[0]);
         item1Count.innerText = autoItemCounts[0];
         item1Price.innerText = getNotationString(new BigNumber(autoItemPrices[0]));
         item2.disabled = autoItemCounts[0] < 10;
@@ -87,8 +87,8 @@ item1.addEventListener("click", () => {
 item2.addEventListener("click", () => {
     if (score.gte(autoItemPrices[1])) {
         score = score.minus(autoItemPrices[1]);
-        autoItemPrices[1] *= 1.2;
         autoItemCounts[1]++;
+        autoItemPrices[1] = Price(autoItemCounts[1], autoItemPrices[1], PricesRate[1]);
         item2Count.innerText = autoItemCounts[1];
         item2Price.innerText = getNotationString(new BigNumber(autoItemPrices[1]));
         item3.disabled = autoItemCounts[1] < 10;
@@ -101,8 +101,8 @@ item2.addEventListener("click", () => {
 item3.addEventListener("click", () => {
     if (score.gte(autoItemPrices[2])) {
         score = score.minus(autoItemPrices[2]);
-        autoItemPrices[2] *= 1.2;
         autoItemCounts[2]++;
+        autoItemPrices[2] = Price(autoItemCounts[2], autoItemPrices[2], PricesRate[2]);
         item3Count.innerText = autoItemCounts[2];
         item3Price.innerText = getNotationString(new BigNumber(autoItemPrices[2]));
         item4.disabled = autoItemCounts[2] < 10;
@@ -115,8 +115,8 @@ item3.addEventListener("click", () => {
 item4.addEventListener("click", () => {
   if (score.gte(autoItemPrices[3])) {
       score = score.minus(autoItemPrices[3]);
-      autoItemPrices[3] *= 1.2;
       autoItemCounts[3]++;
+      autoItemPrices[3] = Price(autoItemCounts[3], autoItemPrices[3], PricesRate[3]);
       item4Count.innerText = autoItemCounts[3];
       item4Price.innerText = getNotationString(new BigNumber(autoItemPrices[3]));
       item5.disabled = autoItemCounts[3] < 10;
@@ -129,8 +129,8 @@ item4.addEventListener("click", () => {
 item5.addEventListener("click", () => {
   if (score.gte(autoItemPrices[4])) {
       score = score.minus(autoItemPrices[4]);
-      autoItemPrices[4] *= 1.2;
       autoItemCounts[4]++;
+      autoItemPrices[4] = Price(autoItemCounts[4], autoItemPrices[4], PricesRate[4]);
       item5Count.innerText = autoItemCounts[4];
       item5Price.innerText = getNotationString(new BigNumber(autoItemPrices[4]));
       item6.disabled = autoItemCounts[4] < 10;
@@ -143,8 +143,8 @@ item5.addEventListener("click", () => {
 item6.addEventListener("click", () => {
   if (score.gte(autoItemPrices[5])) {
       score = score.minus(autoItemPrices[5]);
-      autoItemPrices[5] *= 1.2;
       autoItemCounts[5]++;
+      autoItemPrices[5] = Price(autoItemCounts[5], autoItemPrices[5], PricesRate[5]);
       item6Count.innerText = autoItemCounts[5];
       item6Price.innerText = getNotationString(new BigNumber(autoItemPrices[5]));
       showScore();
