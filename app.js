@@ -1,7 +1,13 @@
-let score = 0;
-let autoScore = 0;
-let autoItemLevel = 0;
+const formatter = new Intl.NumberFormat('ja-JP', { notation: 'compact', compactDisplay: 'short' });
 
+let score = new BigNumber("0");
+
+
+
+const scoreDecimalPlaces = score.dp();
+
+//クリックの価格
+let clickScore = { min: 0.5, max: 1 }
 //初期値段
 let autoItemPrices = [10, 500, 3000, 10000, 100000, 1000000];
 
@@ -46,92 +52,93 @@ const pps6 = document.getElementById("pps6");
 
 // クリックでポイントを獲得する
 button.addEventListener("click", () => {
-    const addScore = Math.floor(Math.random() * 101) / 100 + 0.1;
-    score += addScore;
-    scoreText.innerText = `スコア: ${score.toFixed(1)}pt`;
-    addScoreText.innerText = `${addScore.toFixed(1)}`;
+    const addScore = (Math.random() * (clickScore.max - clickScore.min) + clickScore.min).toFixed(1);
+    console.log(addScore)
+    score = score.plus(addScore);
+    showScore();
+    addScoreText.innerText = getNotationString(new BigNumber(addScore));
     buttonchech()
 });
 
 // 自動生成アイテム Lv.1を購入する
 item1.addEventListener("click", () => {
-    if (score >= autoItemPrices[0]) {
-        score -= autoItemPrices[0];
+    if (score.gte(autoItemPrices[0])) {
+        score = score.minus(autoItemPrices[0]);
         autoItemPrices[0] *= 1.1;
         autoItemCounts[0]++;
         item1Count.innerText = autoItemCounts[0];
-        item1Price.innerText = Math.ceil(autoItemPrices[0]);
+        item1Price.innerText = getNotationString(new BigNumber(autoItemPrices[0]));
         item2.disabled = autoItemCounts[0] < 10;
-        scoreText.innerText = `スコア: ${score.toFixed(1)}pt`;
+        showScore();
         buttonchech()
     }
 });
 
 // 自動生成アイテム Lv.2を購入する
 item2.addEventListener("click", () => {
-    if (score >= autoItemPrices[1]) {
-        score -= autoItemPrices[1];
+    if (score.gte(autoItemPrices[1])) {
+        score = score.minus(autoItemPrices[1]);
         autoItemPrices[1] *= 1.2;
         autoItemCounts[1]++;
         item2Count.innerText = autoItemCounts[1];
-        item2Price.innerText = Math.ceil(autoItemPrices[1]);
+        item2Price.innerText = getNotationString(new BigNumber(autoItemPrices[1]));
         item3.disabled = autoItemCounts[1] < 10;
-        scoreText.innerText = `スコア: ${score.toFixed(1)}pt`;
+        showScore();
         buttonchech()
     }
 });
 
 // 自動生成アイテム Lv.3を購入する
 item3.addEventListener("click", () => {
-    if (score >= autoItemPrices[2]) {
-        score -= autoItemPrices[2];
+    if (score.gte(autoItemPrices[2])) {
+        score = score.minus(autoItemPrices[2]);
         autoItemPrices[2] *= 1.2;
         autoItemCounts[2]++;
         item3Count.innerText = autoItemCounts[2];
-        item3Price.innerText = Math.ceil(autoItemPrices[2]);
+        item3Price.innerText = getNotationString(new BigNumber(autoItemPrices[2]));
         item4.disabled = autoItemCounts[2] < 10;
-        scoreText.innerText = `スコア: ${score.toFixed(1)}pt`;
+        showScore();
         buttonchech()
     }
 });
 
 // 自動生成アイテム Lv.4を購入する
 item4.addEventListener("click", () => {
-  if (score >= autoItemPrices[3]) {
-      score -= autoItemPrices[3];
+  if (score.gte(autoItemPrices[3])) {
+      score = score.minus(autoItemPrices[3]);
       autoItemPrices[3] *= 1.2;
       autoItemCounts[3]++;
       item4Count.innerText = autoItemCounts[3];
-      item4Price.innerText = Math.ceil(autoItemPrices[3]);
+      item4Price.innerText = getNotationString(new BigNumber(autoItemPrices[3]));
       item5.disabled = autoItemCounts[3] < 10;
-      scoreText.innerText = `スコア: ${score.toFixed(1)}pt`;
+      showScore();
       buttonchech()
   }
 });
 
 // 自動生成アイテム Lv.5を購入する
 item5.addEventListener("click", () => {
-  if (score >= autoItemPrices[4]) {
-      score -= autoItemPrices[4];
+  if (score.gte(autoItemPrices[4])) {
+      score = score.minus(autoItemPrices[4]);
       autoItemPrices[4] *= 1.2;
       autoItemCounts[4]++;
       item5Count.innerText = autoItemCounts[4];
-      item5Price.innerText = Math.ceil(autoItemPrices[4]);
+      item5Price.innerText = getNotationString(new BigNumber(autoItemPrices[4]));
       item6.disabled = autoItemCounts[4] < 10;
-      scoreText.innerText = `スコア: ${score.toFixed(1)}pt`;
+      showScore();
       buttonchech()
   }
 });
 
 // 自動生成アイテム Lv.6を購入する
 item6.addEventListener("click", () => {
-  if (score >= autoItemPrices[5]) {
-      score -= autoItemPrices[5];
+  if (score.gte(autoItemPrices[5])) {
+      score = score.minus(autoItemPrices[5]);
       autoItemPrices[5] *= 1.2;
       autoItemCounts[5]++;
       item6Count.innerText = autoItemCounts[5];
-      item6Price.innerText = Math.ceil(autoItemPrices[5]);
-      scoreText.innerText = `スコア: ${score.toFixed(1)}pt`;
+      item6Price.innerText = getNotationString(new BigNumber(autoItemPrices[5]));
+      showScore();
       buttonchech()
   }
 });
@@ -139,8 +146,8 @@ item6.addEventListener("click", () => {
 // 自動生成アイテムによるポイント生成
 setInterval(() => {
   const addScore = autoScores[0] * autoItemCounts[0] + autoScores[1] * autoItemCounts[1] + autoScores[2] * autoItemCounts[2] + autoScores[3] * autoItemCounts[3] + autoScores[4] * autoItemCounts[4] + autoScores[5] * autoItemCounts[5];
-    score += addScore;
-    scoreText.innerText = `スコア: ${score.toFixed(1)}pt`;
+    score = score.plus(addScore);
+    showScore();
     // 自動生成アイテムによるポイントの表示
     document.getElementById("add-score-auto").innerText = addScore.toFixed(1);
     buttonchech()
@@ -176,7 +183,7 @@ buttonchech();
 
 function buttonchech() {
   //1
-  if (score >= autoItemPrices[0])
+  if (score.gte(autoItemPrices[0]))
     item1.style.backgroundColor = can;
   else
     item1.style.backgroundColor = cant;
@@ -184,7 +191,7 @@ function buttonchech() {
   //2
   if (item2.disabled)
     item2.style.backgroundColor = disa;
-  else if (score >= autoItemPrices[1])
+  else if (score.gte(autoItemPrices[1]))
     item2.style.backgroundColor = can;
   else
     item2.style.backgroundColor = cant;
@@ -192,7 +199,7 @@ function buttonchech() {
   //3
   if (item3.disabled)
     item3.style.backgroundColor = disa;
-  else if (score >= autoItemPrices[2])
+  else if (score.gte(autoItemPrices[2]))
     item3.style.backgroundColor = can;
   else
     item3.style.backgroundColor = cant;
@@ -200,7 +207,7 @@ function buttonchech() {
   //4
   if (item4.disabled)
     item4.style.backgroundColor = disa;
-  else if (score >= autoItemPrices[3])
+  else if (score.gte(autoItemPrices[3]))
     item4.style.backgroundColor = can;
   else
     item4.style.backgroundColor = cant;
@@ -208,7 +215,7 @@ function buttonchech() {
   //5
   if (item5.disabled)
     item5.style.backgroundColor = disa;
-  else if (score >= autoItemPrices[4])
+  else if (score.gte(autoItemPrices[4]))
     item5.style.backgroundColor = can;
   else
     item5.style.backgroundColor = cant;
@@ -216,7 +223,7 @@ function buttonchech() {
   //6
   if (item6.disabled)
     item6.style.backgroundColor = disa;
-  else if (score >= autoItemPrices[5])
+  else if (score.gte(autoItemPrices[5]))
     item6.style.backgroundColor = can;
   else
     item6.style.backgroundColor = cant;
@@ -230,3 +237,56 @@ function setScrollHeight() {
 }
 window.onload = setScrollHeight;
 window.onresize = setScrollHeight;
+
+function showScore() {
+
+  const notation = getNotationString();
+  scoreText.innerText = `スコア: ${notation}pt`;
+}
+
+/**
+ * 
+ * @param {*} s 
+ * @returns { string }
+ */
+
+// 桁数に応じた指数表記の表示文字列を取得する関数
+function getNotationString(s = new BigNumber(score)) {
+  const notations = [
+    { value: 0, notation: '' },
+    { value: 1e4, notation: '万' },
+    { value: 1e8, notation: '億' },
+    { value: 1e12, notation: '兆' },
+    { value: 1e16, notation: '京' },
+    { value: 1e20, notation: '垓' },
+    { value: 1e24, notation: '𥝱' },
+    { value: 1e28, notation: '穣' },
+    { value: 1e32, notation: '溝' },
+    { value: 1e36, notation: '澗' },
+    { value: 1e40, notation: '正' },
+    { value: 1e44, notation: '載' },
+    { value: 1e48, notation: '極' },
+    { value: 1e52, notation: '恒河沙' },
+    { value: 1e56, notation: '阿僧祇' },
+    { value: 1e60, notation: '那由他' },
+    { value: 1e64, notation: '不可思議' },
+    { value: 1e68, notation: '無量大数' },
+    { value: 1e72, notation: '' }
+  ];
+
+  for (let i = notations.length - 1; i >= 0; i--) {
+    if (s.gte(Number(notations[i].value))) {
+      let notation = notations[i].notation;
+      let n = new BigNumber(s);
+      let num = new BigNumber(n.decimalPlaces(1, BigNumber.ROUND_DOWN));
+      //console.log(num.toString())
+      if (notation !== "")
+        return num.div(notations[i].value).toFixed(1)+notation;
+        //console.warn(num.toString())
+        //console.error(`${((num.div(("1e"+(num.e-2))).times("100")).toFixed(1))}e${(num.e-2)}`)
+      if (num.gte("1e2") && i !== 0)
+        return `${new BigNumber(num.div(new BigNumber("1e"+(num.e-2)))).toFixed(1)}e${(num.e-2)}`
+      return num.toFixed(1)
+    }
+  }
+}
