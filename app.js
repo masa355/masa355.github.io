@@ -1,5 +1,3 @@
-const formatter = new Intl.NumberFormat('ja-JP', { notation: 'compact', compactDisplay: 'short' });
-
 let score = new BigNumber("0");
 if (Cookies.get("score") != undefined)
     score = new BigNumber(Cookies.get("score"))
@@ -54,6 +52,7 @@ const pps6 = document.getElementById("pps6");
 button.addEventListener("click", () => {
     const addScore = (Math.random() * (clickScore.max - clickScore.min) + clickScore.min).toFixed(1);
     score = score.plus(addScore);
+    if (score.gte("1e3001")) score = new BigNumber("1e3000");
     showScore();
     addScoreText.innerText = getNotationString(new BigNumber(addScore));
     buttonchech()
@@ -146,6 +145,7 @@ item6.addEventListener("click", () => {
 setInterval(() => {
     const addScore = autoScores[0] * autoItemCounts[0] + autoScores[1] * autoItemCounts[1] + autoScores[2] * autoItemCounts[2] + autoScores[3] * autoItemCounts[3] + autoScores[4] * autoItemCounts[4] + autoScores[5] * autoItemCounts[5];
     score = score.plus(addScore);
+    if (score.gte("1e3001")) score = new BigNumber("1e3000");
     showScore();
     // 自動生成アイテムによるポイントの表示
     document.getElementById("add-score-auto").innerText = addScore.toFixed(1);
