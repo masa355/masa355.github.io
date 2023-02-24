@@ -1,6 +1,6 @@
 const formatter = new Intl.NumberFormat('ja-JP', { notation: 'compact', compactDisplay: 'short' });
 
-let score = Cookies.get("score") || new BigNumber("0");
+let score = new BigNumber(Cookies.get("score")) || new BigNumber("0");
 
 
 //クリックの価格
