@@ -2,7 +2,7 @@
 let score = new BigNumber(Cookies.get("score") || "0");
 
 //Github更新確認
-const version = "0.13.8";
+const version = "0.14.0";
 
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 };
@@ -11,7 +11,7 @@ let clickScore = { min: 0.5, max: 1 };
 const PricesRate = [1.1, 1.2, 1.2, 1.2, 1.2, 1.2];
 
 //アイテムの個数
-let autoItemCounts = JSON.parse(Cookies.get("ItemCounts") || "[1,1,1,1,1,1]");
+let autoItemCounts = JSON.parse(Cookies.get("ItemCounts") || "[0,0,0,0,0,0]");
 
 //初期値段
 let autoItemPrices = [10, 500, 3000, 10000, 100000, 1000000];
@@ -301,5 +301,5 @@ window.addEventListener('unload', function() {
 });
 
 function Price(quantity, price, rate) {
-  return (price * Math.pow(rate, quantity));
+  return (price * Math.pow(rate, quantity)).toFixed(1);
 }
