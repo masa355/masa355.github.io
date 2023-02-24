@@ -2,7 +2,7 @@
 let score = new BigNumber(Cookies.get("score") || "0");
 
 //Github更新確認
-const version = "0.14.0";
+const version = "0.14.1";
 
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 };
@@ -20,6 +20,7 @@ for (let i=0; i<autoItemPrices.length; i++) {
   const price = Price(autoItemCounts[i], autoItemPrices[i], PricesRate[i]);
   autoItemPrices[i] = price;
   document.getElementById(`item${i+1}-price`).innerText = getNotationString(new BigNumber(price));
+  document.getElementById(`item${i+1}-count`).innerText = autoItemCounts[i];
 }
 
 // 自動生成アイテムの各レベルでの生成量
