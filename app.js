@@ -53,7 +53,6 @@ const pps6 = document.getElementById("pps6");
 // クリックでポイントを獲得する
 button.addEventListener("click", () => {
     const addScore = (Math.random() * (clickScore.max - clickScore.min) + clickScore.min).toFixed(1);
-    console.log(addScore)
     score = score.plus(addScore);
     showScore();
     addScoreText.innerText = getNotationString(new BigNumber(addScore));
@@ -244,11 +243,6 @@ function showScore() {
   scoreText.innerText = `スコア: ${notation}pt`;
 }
 
-/**
- * 
- * @param {*} s 
- * @returns { string }
- */
 
 // 桁数に応じた指数表記の表示文字列を取得する関数
 function getNotationString(s = new BigNumber(score)) {
@@ -279,11 +273,8 @@ function getNotationString(s = new BigNumber(score)) {
       let notation = notations[i].notation;
       let n = new BigNumber(s);
       let num = new BigNumber(n.decimalPlaces(1, BigNumber.ROUND_DOWN));
-      //console.log(num.toString())
       if (notation !== "")
         return num.div(notations[i].value).toFixed(1)+notation;
-        //console.warn(num.toString())
-        //console.error(`${((num.div(("1e"+(num.e-2))).times("100")).toFixed(1))}e${(num.e-2)}`)
       if (num.gte("1e2") && i !== 0)
         return `${new BigNumber(num.div(new BigNumber("1e"+(num.e-2)))).toFixed(1)}e${(num.e-2)}`
       return num.toFixed(1)
