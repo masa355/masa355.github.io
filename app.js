@@ -2,8 +2,8 @@
 let score = new BigNumber(Cookies.get("score") || "0");
 
 //Github更新確認
-const version = "0.14.7";
-console.log("ほうちげー version: "+version);
+const version = "0.14.8";
+console.log("ほうちげー\nversion: "+version);
 
 //クリックの価格
 let clickScore = { min: 0.5, max: 1 };
@@ -156,7 +156,7 @@ item6.addEventListener("click", () => {
 
 // 自動生成アイテムによるポイント生成
 setInterval(() => {
-    const addScore = autoScores[0] * autoItemCounts[0] + autoScores[1] * autoItemCounts[1] + autoScores[2] * autoItemCounts[2] + autoScores[3] * autoItemCounts[3] + autoScores[4] * autoItemCounts[4] + autoScores[5] * autoItemCounts[5];
+    const addScore = getNotationString(new BigNumber(autoScores[0] * autoItemCounts[0] + autoScores[1] * autoItemCounts[1] + autoScores[2] * autoItemCounts[2] + autoScores[3] * autoItemCounts[3] + autoScores[4] * autoItemCounts[4] + autoScores[5] * autoItemCounts[5]));
     score = score.plus(addScore);
     if (score.gte("1e3001")) score = new BigNumber("1e3000");
     showScore();
