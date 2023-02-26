@@ -25,6 +25,9 @@ for (let i=0; i<autoItemPrices.length; i++) {
   document.getElementById(`item${i+1}-count`).innerText = autoItemCounts[i];
 }
 
+if (score.toString() === "NaN") 
+  score = new BigNumber("0");
+
 // 自動生成アイテムの各レベルでの生成量
 const autoScores = [0.5, 2, 10, 50, 100, 500];
 
@@ -156,12 +159,12 @@ item6.addEventListener("click", () => {
 
 // 自動生成アイテムによるポイント生成
 setInterval(() => {
-    const addScore = getNotationString(new BigNumber(autoScores[0] * autoItemCounts[0] + autoScores[1] * autoItemCounts[1] + autoScores[2] * autoItemCounts[2] + autoScores[3] * autoItemCounts[3] + autoScores[4] * autoItemCounts[4] + autoScores[5] * autoItemCounts[5]));
+    const addScore = new BigNumber(autoScores[0] * autoItemCounts[0] + autoScores[1] * autoItemCounts[1] + autoScores[2] * autoItemCounts[2] + autoScores[3] * autoItemCounts[3] + autoScores[4] * autoItemCounts[4] + autoScores[5] * autoItemCounts[5]);
     score = score.plus(addScore);
     if (score.gte("1e3001")) score = new BigNumber("1e3000");
     showScore();
     // 自動生成アイテムによるポイントの表示
-    document.getElementById("add-score-auto").innerText = addScore.toFixed(1);
+    document.getElementById("add-score-auto").innerText = getNotationString(new BigNumber(addScore.toFixed(1)));
     buttonchech()
 }, 1000);
 
